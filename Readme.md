@@ -1,6 +1,6 @@
 
 ### Session 1:
-- About Gatsby and JAMstack
+- About Gatsby, static site generator and JAMstack
 - Install and setup dev server
 - Understanding project structure
     - Folder structure
