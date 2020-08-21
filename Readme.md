@@ -36,3 +36,10 @@
 - Deployment
  
  ### Project Details:
+Product catalog site with following functionality:
+- Home page with product listing with Product name, image and price
+- User can view prodcut detail with pagination
+- User search projects
+- Add to card and place order 
+- Sign up and sign in 
+- Data source: MarkDown, JSON API
