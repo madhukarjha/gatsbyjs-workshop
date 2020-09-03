@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
 import { Link, graphql } from "gatsby"
+import styled from "styled-components"
+import Img from "gatsby-image";
+
 import Layout from "../components/layout"
 
+const ImgStyled = styled(Img)`
+    width: 25%;
+    height: 100px;
+
+    @media (max-width: 930px) {
+        height: 50px;
+      }
+`
 export default function search(props) {
     const { data } = props
     const siteTitle = data.site.siteMetadata.title
@@ -54,7 +65,7 @@ export default function search(props) {
             {products.map(({ node }) => {
                 const { excerpt } = node
                 const { slug } = node.fields
-                const { tags, title, date, description } = node.frontmatter
+                const { title, date, description, price, image} = node.frontmatter
                 return (
                     <article key={slug}>
                         <header>
@@ -70,6 +81,10 @@ export default function search(props) {
                                 }}
                             />
                         </section>
+                        <section>
+                        &#8377; {price.toFixed(2)}
+                        </section>
+                        <ImgStyled fluid={image.childImageSharp.fluid} />
                         <hr />
                     </article>
                 )
@@ -94,6 +109,14 @@ export const pageQuery = graphql`
             title
             description
             date(formatString: "MMMM DD, YYYY")
+            price
+            image {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             
           }
           fields {
