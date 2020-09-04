@@ -29,15 +29,10 @@ export default function search(props) {
         const { data } = props
         const products = data.allMarkdownRemark.edges || []
         const filteredData = products.filter(product => {
-            const { description, title, tags } = product.node.frontmatter
+            const { description, title } = product.node.frontmatter
             return (
                 description.toLowerCase().includes(query.toLowerCase()) ||
-                title.toLowerCase().includes(query.toLowerCase()) ||
-                (tags &&
-                    tags
-                        .join("")
-                        .toLowerCase()
-                        .includes(query.toLowerCase()))
+                title.toLowerCase().includes(query.toLowerCase())
             )
         })
         setState({
