@@ -1,5 +1,5 @@
 
-### Session 1:
+### Session 1 (Week 1):
 - About Gatsby, static site generator and JAMstack
 - Install and setup dev server
 - Understanding project structure
@@ -9,7 +9,18 @@
     - Bootstrap process
     - Configuring webpack
 - Demo Sample project with MarkDown
-### Session 2:
+
+### Session 2 (Week 1) 
+    - GraphQL Introduction
+    - Install and setup GraphQL
+    - Quick Demo of a running GraphQL Server
+    - Schema Definition, Built-in Types and Custom Types
+
+### Session 3 (Week 2)
+    - Hands-on coding of the GraphQL Server
+    - Query and Mutation types
+
+### Session 4 (Week 2):
 - Routing
 - Starter apps
 - Layout
@@ -18,28 +29,23 @@
     - Passing props as states
     - Read query string
     - Multi-level component
-### Session 3:
+
+### Session 5 (Week 3):
 - Styling
 - Using CSS modules
 - Adding font
 - Using Emotions/Styled components
-### Session 4, 5:
-- GraphQL
-### Session 6:
+
+### Session 6 (Week 3):
+- What is plug-in
 - Configuring plug-ins
 - Handling, Sourcing and Querying data
 - Handling markdown data: transformer plugin
-### Session 7:
+
+### Session 7 (Week 4):
+- Creating and using custom plug-in
 - Handling themes
-### Session 8:
 - Understanding AST and custom transformer
-- Deployment
- 
- ### Project Details:
-Product catalog site with following functionality:
-- Home page with product listing with Product name, image and price
-- User can view prodcut detail with pagination
-- User search projects
-- Add to card and place order 
-- Sign up and sign in 
-- Data source: MarkDown, JSON API
+
+### Session 8 (Week 4):
+- Packaging and deployment(netlify.com)
