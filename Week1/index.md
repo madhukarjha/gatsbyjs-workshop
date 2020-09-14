@@ -52,6 +52,8 @@ Gatsby relies on Nodejs and use node package manager (npm) to install gatsby and
 4. Install gatsby command line interface
 npm install --global gatsby-cli
 5. Check its installed: gatsby --version
+6. Create new project using:
+`gatsby new <appname> <starter project>`
 
 ## **Understanding project structure**
 
