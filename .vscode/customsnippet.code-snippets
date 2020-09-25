@@ -1,0 +1,141 @@
+{
+	// Place your gatsbyjs-workshop workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Create page 1": {
+		"prefix": "createpage1",
+		"body": [
+		  "exports.createPages = async ({ graphql, actions }) => {",
+		  "  const { createPage } = actions;",
+		  "  const fileNames = [`/first-page/`, `/second-page/`];",
+		  "  fileNames.forEach((file) => {",
+		  "    createPage({",
+		  "      path: file,",
+		  "      component: path.resolve(`./src/templates/sampleTemplate.js`),",
+		  "      context: {",
+		  "        id: `1234566`,",
+		  "      },",
+		  "    })",
+		  "  });",
+		  "}",
+		  ""
+		],
+		"description": "Create page 1"
+	  },
+	  "Create node 1": {
+		"prefix": "createnode1",
+		"body": [
+		  "exports.onCreateNode = ({ node, getNode, actions }) => {",
+		  "  if (node.internal.type === `MarkdownRemark`) {",
+		  "    const fileNode = getNode(node.parent)",
+		  "    console.log(`\\nddd`, fileNode.relativePath)",
+		  "  ",
+		  "  }",
+		  "}"
+		],
+		"description": "Create node 1"
+	  },
+	  "Create node 2": {
+		"prefix": "createnode2",
+		"body": [
+		  "const slug = createFilePath({ node, getNode, basePath: `pages` })",
+		  "actions.createNodeField({",
+		  "  node,",
+		  "  name: `mypath`,",
+		  "  value: slug,",
+		  "})"
+		],
+		"description": "Create node 2"
+	  },
+	  "Create page 2": {
+		"prefix": "createpage2",
+		"body": [
+		  "const { createPage } = actions",
+		  "  const result = await graphql(`",
+		  "    query {",
+		  "      allMarkdownRemark {",
+		  "        edges {",
+		  "          node {",
+		  "            fields {",
+		  "              mypath",
+		  "            }",
+		  "          }",
+		  "        }",
+		  "      }",
+		  "    }",
+		  "  `)",
+		  "  result.data.allMarkdownRemark.edges.forEach(({ node }) => {",
+		  "    createPage({",
+		  "      path: node.fields.mypath,",
+		  "      component: path.resolve(`./src/templates/sampleTemplate.js`),",
+		  "      context: {",
+		  "        // Data passed to context is available",
+		  "        // in page queries as GraphQL variables.",
+		  "        slug: node.fields.mypath",
+		  "      },",
+		  "    })",
+		  "  })"
+		],
+		"description": "Create page 2"
+	  },
+	  "sample template 1": {
+		"prefix": "sampletemplat1",
+		"body": [
+		  "const sampleTemplate = (props) => {",
+		  "    return (",
+		  "        <div>",
+		  "            <h1>{props.pathContext.id}</h1>",
+		  "        </div>",
+		  "    )",
+		  "}",
+		  "export default sampleTemplate;",
+		  ""
+		],
+		"description": "sample template 1"
+	  },
+	  "sample template 2": {
+		"prefix": "sampletemplat2",
+		"body": [
+		  "import React from 'react';",
+		  "import { graphql } from \"gatsby\";",
+		  "",
+		  "const sampleTemplate = ({ data }) => {",
+		  "    const post = data.markdownRemark",
+		  "    return (",
+		  "        <div>",
+		  "                <h1>{post.frontmatter.title}</h1>",
+		  "                <div dangerouslySetInnerHTML={{ __html: post.html }} />",
+		  "        </div>",
+		  "    )",
+		  "}",
+		  "export default sampleTemplate;",
+		  "",
+		  "export const query = graphql`",
+		  "  query($slug: String!) {",
+		  "    markdownRemark(fields: { mypath: { eq: $slug } }) {",
+		  "      html",
+		  "      frontmatter {",
+		  "        title",
+		  "      }",
+		  "    }",
+		  "  }",
+		  "`",
+		  "",
+		  ""
+		],
+		"description": "sample template 2"
+	  }
+}
